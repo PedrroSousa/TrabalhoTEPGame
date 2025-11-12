@@ -1,21 +1,41 @@
 # TrabalhoTEPGame
 
 ## Arquitetura Cliente-Servidor
-### ● O servidor deve ser capaz de gerenciar múltiplos clientes simultaneamente (mínimo de 2 clientes).
-### ● O servidor é o autoridade do jogo: ele valida todas as jogadas, gerencia o estado global e notifica os clientes.
+### - O servidor deve ser capaz de gerenciar múltiplos clientes simultaneamente (mínimo de 2 clientes).
+### - O servidor é o autoridade do jogo: ele valida todas as jogadas, gerencia o estado global e notifica os clientes.
 
 ## Comunicação via Sockets
 
-### ● Vai ser usado o socket TCP. Justificativa:
-### ● Definição de um protocolo de comunicação entre cliente e servidor, com mensagens bem definidas (ex: JOGADA|x,y, RESULTADO acertou, CHAT|mensagem).
+### - Vai ser usado o socket TCP. Justificativa:
+### - Definição de um protocolo de comunicação entre cliente e servidor, com mensagens bem definidas (ex: JOGADA|x,y, RESULTADO acertou, CHAT|mensagem).
 
 ## Funcionalidades Mínimas do Servidor
 
-### ● Aceitar conexões de clientes.
-### ● Gerenciar o estado do jogo (tabuleiro, placar, rodadas).
-### ● Processar comandos dos clientes e enviar respostas.
-### ● Lidar com desconexões de clientes sem travar.
+### - Aceitar conexões de clientes.
+### - Gerenciar o estado do jogo (tabuleiro, placar, rodadas).
+### - Processar comandos dos clientes e enviar respostas.
+### - Lidar com desconexões de clientes sem travar.
 
+ⓌⓋⓅ Ⓖⓐⓜⓔⓢ
+
+  _      ___   _____    _____                 
+ | | /| / / | / / _ \  / ___/__ ___ _  ___ ___
+ | |/ |/ /| |/ / ___/ / (_ / _ `/  ' \/ -_|_-<
+ |__/|__/ |___/_/     \___/\_,_/_/_/_/\__/___/
+                                              
+
+██     ██ ██    ██ ██████       ██████   █████  ███    ███ ███████ ███████ 
+██     ██ ██    ██ ██   ██     ██       ██   ██ ████  ████ ██      ██      
+██  █  ██ ██    ██ ██████      ██   ███ ███████ ██ ████ ██ █████   ███████ 
+██ ███ ██  ██  ██  ██          ██    ██ ██   ██ ██  ██  ██ ██           ██ 
+ ███ ███    ████   ██           ██████  ██   ██ ██      ██ ███████ ███████ 
+                                                                           
+                                                                           
+  _      ___   _____       __     __ __         ___   //| __        ____              __  
+ | | /| / / | / / _ \  __ / /__  / //_/__ ___  / _ \_|/||/ /  ___ _/ __/__  ___  ____/ /__
+ | |/ |/ /| |/ / ___/ / // / _ \/ ,< / -_) _ \/ ___/ _ \/ /__/ _ `/\ \/ _ \/ _ \/ __/  '_/
+ |__/|__/ |___/_/     \___/\___/_/|_|\__/_//_/_/   \___/____/\_,_/___/ .__/\___/\__/_/\_\ 
+                                                                    /_/       
 ## Funcionalidades Mínimas do Cliente
 
 ### - Conectar ao servidor.
