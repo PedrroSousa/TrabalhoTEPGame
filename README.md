@@ -31,6 +31,15 @@
 
 ## O jogo se trata de Pedra Papel Tesoura, mas adicionando Lagarto e Spock.
 
+
+### esquema de funcionamento do jogo
+
+#### Nome -> Empresa (WVP Games) -> Descrição -> comandos, regras -> Menu -> salas -> gameplay, pontuação -> historico, sair da sala, jogar novamente -> 
+
+#### observação: tratamento de erros, queda de um cliente, regras do que acontece
+
+
+
 # Jogo: Pedra, Papel, Terousa, Lagarto e Spock.
 
 ## Regras
