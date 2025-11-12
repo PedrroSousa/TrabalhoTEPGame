@@ -1,6 +1,6 @@
 import socket
 # Definindo o host e a porta do servidor
-HOST = 'localhost'
+HOST = '0.0.0.0'
 PORT = 5000
 # ------------------------------------------------
 
