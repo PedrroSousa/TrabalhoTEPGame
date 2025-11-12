@@ -6,7 +6,7 @@
 
 ## Comunicação via Sockets
 
-### ● Uso de sockets TCP ou UDP, justificando a escolha.
+### ● Vai ser usado o socket TCP. Justificativa:
 ### ● Definição de um protocolo de comunicação entre cliente e servidor, com mensagens bem definidas (ex: JOGADA|x,y, RESULTADO acertou, CHAT|mensagem).
 
 ## Funcionalidades Mínimas do Servidor
@@ -34,7 +34,7 @@
 
 ### esquema de funcionamento do jogo
 
-#### Nome -> Empresa (WVP Games) -> Descrição -> comandos, regras -> Menu -> salas -> gameplay, pontuação -> historico, sair da sala, jogar novamente -> 
+#### Nome -> Empresa (WVP Games) -> Descrição -> Menu: comandos, regras -> salas -> gameplay, pontuação -> historico, sair da sala, jogar novamente, voltar ao menu-> 
 
 #### observação: tratamento de erros, queda de um cliente, regras do que acontece
 
