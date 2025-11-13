@@ -20,6 +20,9 @@ NOMEGAME = r'''
 '''
 # -------------------------------------------------
 
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def exibirLogo():
     clear()
     print(LOGO)
@@ -32,7 +35,6 @@ def exibirLogo():
     print("\n")
     clear()
 
-# function para exibir a tela de início
 def exibirIntro():
     print(NOMEGAME)
     print("\nCarregando", end="")
@@ -40,7 +42,6 @@ def exibirIntro():
         time.sleep(0.5)
         print(".", end="", flush=True)
     print("\n")
-# ------------------------------------------------
 
 def exibirInicio():
     clear()
@@ -49,49 +50,61 @@ def exibirInicio():
     print("1 - Jogar Online")
     print("2 - Jogar Contra Máquina")
     print("3 - Voltar ao Menu")
-    escolha = input("Escolha uma opção: ")
-    return escolha
-    time.sleep(1)
+    return input("Escolha uma opção: ")
 
-# function para exibir o menu principal do jogo
 def exibirMenuPrincipal():
     print("==== MENU PRINCIPAL ==============================================")
     print("1 - Jogar")
     print("2 - Regras")
     print("3 - Sair")
     return input("\nEscolha uma opção: ")
-# ------------------------------------------------
 
-# function para exibir o menu de modos de jogo
-def exibirMenuJogo():
-    clear()
-    print("==== MODO DE JOGO ===============================================")
-    print("1 - Jogar Online")
-    print("2 - Jogar Contra Máquina")
-    print("3 - Voltar")
-    return input("\nEscolha uma opção: ")
-# ------------------------------------------------
-
-# function para exibir as regras do jogo
 def mostrarRegras():
     exibirIntro()
     print("==== REGRAS DO JOGO ====\n")
-    print('''- ✂️Tesoura corta 📄Papel - || - 📄Papel cobre 🪨Pedra**\n
-          - 🪨Pedra esmaga 🦎Lagarto - || - 🦎Lagarto envenena 🖖Spock\n
-          - 🖖Spock destrói ✂️Tesoura - || - ✂️Tesoura decapita 🦎Lagarto\n
-          - 🦎Lagarto come 📄Papel - || - 📄Papel refuta 🖖Spock\n
-          - 🖖Spock vaporiza 🪨Pedra - || - 🪨Pedra quebra ✂️Tesoura\n''')
+    print('''- ✂️ Tesoura corta 📄 Papel - || - 📄 Papel cobre 🪨 Pedra
+- 🪨 Pedra esmaga 🦎 Lagarto - || - 🦎 Lagarto envenena 🖖 Spock
+- 🖖 Spock destrói ✂️ Tesoura - || - ✂️ Tesoura decapita 🦎 Lagarto
+- 🦎 Lagarto come 📄 Papel - || - 📄 Papel refuta 🖖 Spock
+- 🖖 Spock vaporiza 🪨 Pedra - || - 🪨 Pedra quebra ✂️ Tesoura\n''')
     input("Pressione Enter para voltar ao menu principal...")
     clear()
     exibirIntro()
-# ------------------------------------------------
 
-# function para limpar a tela
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
 # ------------------------------------------------
+def conectarServidor(modo):
+    HOST = 'localhost'
+    PORT = 5000
 
-# Função principal do jogo
+    try:
+        cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        cliente.connect((HOST, PORT))
+        print(f'Conectado! {HOST}:{PORT}')
+        mensagem = cliente.recv(1024).decode('utf-8')
+        print(f'Servidor: {mensagem}')
+        cliente.sendall(modo.encode('utf-8'))
+
+        while True:
+            resposta = cliente.recv(1024).decode('utf-8')
+            if not resposta:
+                print("Servidor encerrou a conexão.")
+                break
+
+            print(f'Servidor: {resposta}')
+            if "Iniciando partida" in resposta:
+                clear()
+                jogada = input("Digite sua jogada (🪨pedra, 📄papel, ✂️tesoura, 🦎lagarto, 🖖spock): ").strip().lower()
+                cliente.sendall(jogada.encode('utf-8'))
+
+    except ConnectionRefusedError:
+        print('Erro de conexão com o servidor.')
+        time.sleep(2)
+
+    except Exception as e:
+        print(f"Erro: {e}")
+        time.sleep(2)
+
+# ------------------------------------------------
 def main():
     exibirLogo()
     exibirIntro()
@@ -101,10 +114,9 @@ def main():
         if opcao == '1':
             escolha = exibirInicio()
             if escolha == "1":
-                conectarServidor()
-                print("Jogar Online - Em desenvolvimento")
+                conectarServidor("online")
             elif escolha == "2":
-                print("Jogar Contra Máquina - Em desenvolvimento")
+                conectarServidor("maquina")
             elif escolha == "3":
                 clear()
                 exibirIntro()
@@ -125,28 +137,6 @@ def main():
             print("Opção inválida")
             time.sleep(1)
 
-
-
-
-            
-                
-def conectarServidor():
-    HOST = 'localhost'
-    PORT = 5000
-
-    try:
-        cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        cliente.connect((HOST, PORT))
-        print(f'Conectado!{HOST}:{PORT}')
-
-        mensagem = cliente.recv(1024).decode('utf-8')
-        print(f'Servidor: {mensagem}')
-        cliente.sendall('Cliente conectado!'.encode('utf-8'))
-        cliente.close()
-    
-    except ConnectionRefusedError:
-        print('Erro de conexão servidor.')
-        time.sleep(2)
-
+# ------------------------------------------------
 if __name__ == "__main__":
     main()
