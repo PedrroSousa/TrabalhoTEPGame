@@ -20,7 +20,7 @@
 
 ## Requisitos
 
-### Python 3.x
+- Python 3.x
 
 ## Executar
 
@@ -38,39 +38,35 @@
 # Requisitos do Trabalho ----------------------------------------------------------------------------------------------------------
 
 ## Arquitetura Cliente-Servidor
-### - O servidor deve ser capaz de gerenciar múltiplos clientes simultaneamente (mínimo de 2 clientes).
-### - O servidor é o autoridade do jogo: ele valida todas as jogadas, gerencia o estado global e notifica os clientes.
+- O servidor deve ser capaz de gerenciar múltiplos clientes simultaneamente (mínimo de 2 clientes).
+- O servidor é o autoridade do jogo: ele valida todas as jogadas, gerencia o estado global e notifica os clientes.
 
 ## Comunicação via Sockets
 
-### - Vai ser usado o socket TCP. Justificativa:
-### - Definição de um protocolo de comunicação entre cliente e servidor, com mensagens bem definidas (ex: JOGADA|x,y, RESULTADO acertou, CHAT|mensagem).
+- Vai ser usado o socket TCP. Justificativa:
+- Definição de um protocolo de comunicação entre cliente e servidor, com mensagens bem definidas (ex: JOGADA|x,y, RESULTADO acertou, CHAT|mensagem).
 
 ## Funcionalidades Mínimas do Servidor
 
-### - Aceitar conexões de clientes.
-### - Gerenciar o estado do jogo (tabuleiro, placar, rodadas).
-### - Processar comandos dos clientes e enviar respostas.
-### - Lidar com desconexões de clientes sem travar.
+- Aceitar conexões de clientes.
+- Gerenciar o estado do jogo (tabuleiro, placar, rodadas).
+- Processar comandos dos clientes e enviar respostas.
+- Lidar com desconexões de clientes sem travar.
 
 ## Funcionalidades Mínimas do Cliente
 
-### - Conectar ao servidor.
-### - Enviar jogadas/comandos.
-### - Receber e exibir o estado atual do jogo.
-### - Interface de usuário (pode ser textual ou gráfica simples).
+- Conectar ao servidor.
+- Enviar jogadas/comandos.
+- Receber e exibir o estado atual do jogo.
+- Interface de usuário (pode ser textual ou gráfica simples).
 
 ## Requisitos Bônus (Opcionais) uma ou mais das opções
 
-### - Persistência de placares ou histórico de partidas.
-### - Suporte a salas de jogo (múltiplas partidas simultâneas).
-### - Interface gráfica (GUI) para o cliente.
-
-
-
+- Persistência de placares ou histórico de partidas.
+- Suporte a salas de jogo (múltiplas partidas simultâneas).
+- Interface gráfica (GUI) para o cliente.
 
 ### esquema de funcionamento do jogo
-#### WVP Games, Equipe -> Nome do Jogo -> Menu: jogar, regras, sair -> Online, Maquina, voltar -> gameplay: Digitar NickName e jogada -> historico, sair da sala, jogar novamente, voltar ao menu-> 
+- WVP Games, Equipe -> Nome do Jogo -> Menu: jogar, regras, sair -> Online, Maquina, voltar -> gameplay: Digitar NickName e jogada -> historico, sair da sala, jogar novamente, voltar ao menu-> 
 
-#### observação: tratamento de erros, queda de um cliente, regras do que acontece
 
