@@ -1,4 +1,41 @@
-# TrabalhoTEPGame
+# Trabalho TEP – Jogo Multiplayer
+  _      ___   _____    _____                 
+ | | /| / / | / / _ \  / ___/__ ___ _  ___ ___
+ | |/ |/ /| |/ / ___/ / (_ / _ `/  ' \/ -_|_-<
+ |__/|__/ |___/_/     \___/\_,_/_/_/_/\__/___/
+### **Equipe:** Pedro Victor, Victoria Freitas, Wesley Gabriel
+
+## Regras - Jogo: Pedra, Papel, Terousa, Lagarto e Spock ---------------------------------------------------------------------------
+- ✂️ **Tesoura corta** 📄 **Papel**  
+- 📄 **Papel cobre** 🪨 **Pedra**  
+- 🪨 **Pedra esmaga** 🦎 **Lagarto**  
+- 🦎 **Lagarto envenena** 🖖 **Spock**  
+- 🖖 **Spock destrói** ✂️ **Tesoura**  
+- ✂️ **Tesoura decapita** 🦎 **Lagarto**  
+- 🦎 **Lagarto come** 📄 **Papel**  
+- 📄 **Papel refuta** 🖖 **Spock**  
+- 🖖 **Spock vaporiza** 🪨 **Pedra**  
+- 🪨 **Pedra quebra** ✂️ **Tesoura**
+
+
+## Requisitos
+
+### Python 3.x
+
+## Executar
+
+- Para executar o user deve iniciar o servidor com o comando "python Servidor.py" (deve estar no mesmo diretorio do arquivo) usando o terminal
+- Fazer a conexão com o Cliente ao Servidor usando o comando "python Cliente.py" (deve estar no mesmo diretorio do arquivo) usando o terminal
+- O HOST do Cliente deve estar com o ip da maquina que roda o Servidor e não necessariamente deve estar na mesma maquina, mas na mesma rede
+
+## Funcionamento
+
+- O servidor fica esperando a conexão dos clientes, o cliente ao conectar ao servidor fica esperando jogadores para iniciar uma partida que precisa de dois jogadores
+- Pode se conectar multiplos clientes, eles são movidos para uma fila que espera uma partida acabar para criar outra com os jogadores na lista de espera
+- cada cliente é colocado em uma thread separada para não interromper ou bloquear as conexões
+
+
+# Requisitos do Trabalho ----------------------------------------------------------------------------------------------------------
 
 ## Arquitetura Cliente-Servidor
 ### - O servidor deve ser capaz de gerenciar múltiplos clientes simultaneamente (mínimo de 2 clientes).
@@ -16,26 +53,6 @@
 ### - Processar comandos dos clientes e enviar respostas.
 ### - Lidar com desconexões de clientes sem travar.
 
-ⓌⓋⓅ Ⓖⓐⓜⓔⓢ
-
-  _      ___   _____    _____                 
- | | /| / / | / / _ \  / ___/__ ___ _  ___ ___
- | |/ |/ /| |/ / ___/ / (_ / _ `/  ' \/ -_|_-<
- |__/|__/ |___/_/     \___/\_,_/_/_/_/\__/___/
-                                              
-
-██     ██ ██    ██ ██████       ██████   █████  ███    ███ ███████ ███████ 
-██     ██ ██    ██ ██   ██     ██       ██   ██ ████  ████ ██      ██      
-██  █  ██ ██    ██ ██████      ██   ███ ███████ ██ ████ ██ █████   ███████ 
-██ ███ ██  ██  ██  ██          ██    ██ ██   ██ ██  ██  ██ ██           ██ 
- ███ ███    ████   ██           ██████  ██   ██ ██      ██ ███████ ███████ 
-                                                                           
-                                                                           
-  _      ___   _____       __     __ __         ___   //| __        ____              __  
- | | /| / / | / / _ \  __ / /__  / //_/__ ___  / _ \_|/||/ /  ___ _/ __/__  ___  ____/ /__
- | |/ |/ /| |/ / ___/ / // / _ \/ ,< / -_) _ \/ ___/ _ \/ /__/ _ `/\ \/ _ \/ _ \/ __/  '_/
- |__/|__/ |___/_/     \___/\___/_/|_|\__/_//_/_/   \___/____/\_,_/___/ .__/\___/\__/_/\_\ 
-                                                                    /_/       
 ## Funcionalidades Mínimas do Cliente
 
 ### - Conectar ao servidor.
@@ -49,28 +66,11 @@
 ### - Suporte a salas de jogo (múltiplas partidas simultâneas).
 ### - Interface gráfica (GUI) para o cliente.
 
-## O jogo se trata de Pedra Papel Tesoura, mas adicionando Lagarto e Spock.
+
 
 
 ### esquema de funcionamento do jogo
-
-#### Nome -> Empresa (WVP Games) -> Descrição -> Menu: comandos, regras -> salas -> gameplay, pontuação -> historico, sair da sala, jogar novamente, voltar ao menu-> 
+#### WVP Games, Equipe -> Nome do Jogo -> Menu: jogar, regras, sair -> Online, Maquina, voltar -> gameplay: Digitar NickName e jogada -> historico, sair da sala, jogar novamente, voltar ao menu-> 
 
 #### observação: tratamento de erros, queda de um cliente, regras do que acontece
 
-
-
-# Jogo: Pedra, Papel, Terousa, Lagarto e Spock.
-
-## Regras
-
-- ✂️ **Tesoura corta** 📄 **Papel**  
-- 📄 **Papel cobre** 🪨 **Pedra**  
-- 🪨 **Pedra esmaga** 🦎 **Lagarto**  
-- 🦎 **Lagarto envenena** 🖖 **Spock**  
-- 🖖 **Spock destrói** ✂️ **Tesoura**  
-- ✂️ **Tesoura decapita** 🦎 **Lagarto**  
-- 🦎 **Lagarto come** 📄 **Papel**  
-- 📄 **Papel refuta** 🖖 **Spock**  
-- 🖖 **Spock vaporiza** 🪨 **Pedra**  
-- 🪨 **Pedra quebra** ✂️ **Tesoura**

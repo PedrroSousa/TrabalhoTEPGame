@@ -1,3 +1,12 @@
+
+'''
+Cliente.py - Cliente do Jogo Pedra, Papel, Tesoura, Lagarto, Spock
+Conectar ao servidor via TCP
+Enviar modo de jogo selecionado (online ou contra máquina)
+Se for partida, enviar nickname e jogada
+Gerenciar menus e interações do usuário no terminal
+'''
+
 import socket
 import time
 import os
@@ -20,9 +29,12 @@ NOMEGAME = r'''
 '''
 # -------------------------------------------------
 
+# funcao para limpar a tela do terminal
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
+# funcao para exibir o logo e a equipe
 def exibirLogo():
     clear()
     print(LOGO)
@@ -35,6 +47,8 @@ def exibirLogo():
     print("\n")
     clear()
 
+
+# funcao para exibir a introducao do jogo com animacao de carregamento
 def exibirIntro():
     print(NOMEGAME)
     print("\nCarregando", end="")
@@ -43,6 +57,7 @@ def exibirIntro():
         print(".", end="", flush=True)
     print("\n")
 
+# funcao para exibir o menu inicial do jogo
 def exibirInicio():
     clear()
     print(NOMEGAME)
@@ -52,6 +67,7 @@ def exibirInicio():
     print("3 - Voltar ao Menu")
     return input("Escolha uma opção: ")
 
+# funcao para exibir o menu principal do jogo
 def exibirMenuPrincipal():
     print("==== MENU PRINCIPAL ==============================================")
     print("1 - Jogar")
@@ -59,6 +75,8 @@ def exibirMenuPrincipal():
     print("3 - Sair")
     return input("\nEscolha uma opção: ")
 
+
+# funcao para exibir as regras do jogo para o jogador no terminal
 def mostrarRegras():
     exibirIntro()
     print("==== REGRAS DO JOGO ====\n")
@@ -71,10 +89,18 @@ def mostrarRegras():
     clear()
     exibirIntro()
 
-# ------------------------------------------------
+# funcao para conectar o cliente ao servidor e gerenciar a comunicacao de entrada/saida
 def conectarServidor(modo):
     HOST = 'localhost'
     PORT = 5000
+
+    '''
+    Conecta ao servidor e gerencia a comunicação.
+    Envia o modo de jogo selecionado (online ou maquina)
+    Recebe mensagens do servidor e exibe ao usuário
+    Se for partida, envia nickname e jogada
+    Aguarda respostas do servidor e exibe resultados
+    '''
 
     try:
         cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -89,10 +115,14 @@ def conectarServidor(modo):
             if not resposta:
                 print("Servidor encerrou a conexão.")
                 break
+            
+            
 
             print(f'Servidor: {resposta}')
             if "Iniciando partida" in resposta:
                 clear()
+                nickname = input("Digite seu nickname: ").strip()
+                cliente.sendall(nickname.encode('utf-8'))
                 jogada = input("Digite sua jogada (🪨pedra, 📄papel, ✂️tesoura, 🦎lagarto, 🖖spock): ").strip().lower()
                 cliente.sendall(jogada.encode('utf-8'))
 
@@ -104,10 +134,12 @@ def conectarServidor(modo):
         print(f"Erro: {e}")
         time.sleep(2)
 
-# ------------------------------------------------
+# funcao principal que gerencia o fluxo do jogo no cliente e exibe os menus principais e secundarios
 def main():
     exibirLogo()
     exibirIntro()
+
+    # loop principal do jogo com menu de opcoes para o jogador
     while True:
         opcao = exibirMenuPrincipal()
         clear()
